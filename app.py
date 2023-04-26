@@ -120,20 +120,21 @@ def main():
                 st.write(tweets_df)
                 # Analyze sentiment
                 sentiments = analyze_sentiment(tweets_df['clean_text'])
-                pos_count, neg_count, neu_count, tweet_sentiments = get_sentiment_counts(sentiments)
-                st.write("Sentiment Analysis")
-                st.write("Positive: ", pos_count)
-                st.write("Negative: ", neg_count)
-                st.write("Neutral: ", neu_count)
-                st.write("Tweet Sentiments:")
-                for tweet, sentiment, polarity in tweet_sentiments:
+		for tweet, sentiment, polarity in tweet_sentiments:
                     if sentiment == 'positive':
                         st.markdown(f"> {tweet} :smiley:")
                     elif sentiment == 'negative':
                         st.markdown(f"> {tweet} :angry:")
                     else:
                         st.markdown(f"> {tweet} 😐")
-                # Pie chart
+
+                pos_count, neg_count, neu_count, tweet_sentiments = get_sentiment_counts(sentiments)
+                st.write("Sentiment Analysis")
+                st.write("Positive: ", pos_count)
+                st.write("Negative: ", neg_count)
+                st.write("Neutral: ", neu_count)
+                st.write("Tweet Sentiments:")
+                                # Pie chart
                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
                 fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
