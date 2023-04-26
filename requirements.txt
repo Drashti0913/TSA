@@ -3,3 +3,4 @@ Textblob
 pandas
 altair
 vaderSentiment
+plotly
