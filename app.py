@@ -4,6 +4,7 @@ from textblob import TextBlob
 import pandas as pd
 import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import plotly.express as px
 
 
 # Fxn
