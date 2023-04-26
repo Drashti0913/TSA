@@ -119,15 +119,7 @@ def main():
             if not tweets_df.empty:
                 st.write(tweets_df)
                 # Analyze sentiment
-                sentiments = analyze_sentiment(tweets_df['clean_text'])
-			for tweet, sentiment, polarity in tweet_sentiments:
-			    if sentiment == 'positive':
-				st.markdown(f"> {tweet} :smiley:")
-			    elif sentiment == 'negative':
-				st.markdown(f"> {tweet} :angry:")
-			    else:
-				st.markdown(f"> {tweet} 😐")
-
+                
                 pos_count, neg_count, neu_count, tweet_sentiments = get_sentiment_counts(sentiments)
                 st.write("Sentiment Analysis")
                 st.write("Positive: ", pos_count)
