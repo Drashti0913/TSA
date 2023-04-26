@@ -70,7 +70,18 @@ def get_sentiment_counts(sentiments):
 
     return pos_count, neg_count, neu_count
 
-
+def sentiment_counts(sentiments):
+    pos_count = 0
+    neg_count = 0
+    neu_count = 0
+    for sentiment in sentiments:
+        if sentiment > 0:
+            pos_count += 1
+        elif sentiment < 0:
+            neg_count += 1
+        else:
+            neu_count += 1
+    return pos_count, neg_count, neu_count
 
 def main():
 	st.title("Sentiment Analysis NLP App")
@@ -134,7 +145,7 @@ def main():
 				st.write(tweets_df)
 				# Analyze sentiment
 				sentiments = analyze_sentiment(tweets_df['clean_text'])
-				pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
+				pos_count, neg_count, neu_count = sentiment_counts(sentiments)
 				st.write("Sentiment Analysis")
 				st.write("Positive: ", pos_count)
 				st.write("Negative: ", neg_count)
