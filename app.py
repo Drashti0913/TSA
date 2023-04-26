@@ -59,7 +59,7 @@ def get_sentiment_counts(sentiments):
     neu_count = 0
 
     for sentiment in sentiments:
-	print(type(sentiment)) # add this line to check type
+    print(type(sentiment)) # add this line to check type
 
         if isinstance(sentiment, tuple):
             sentiment = sentiment[0]
