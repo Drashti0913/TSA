@@ -32,22 +32,20 @@ def analyze_token_sentiment(docx):
 	result = {'positives':pos_list,'negatives':neg_list,'neutral':neu_list}
 	return result 
 
-
-
-
-		
-
-
-
-
+# Function to extract tweets from CSV
+def extract_tweets(keyword, num_tweets):
+    df = pd.read_csv("Twitter_Data.csv")
+    df = df[df["clean_text"].str.contains(keyword, case=False)]
+    df = df[:num_tweets]
+    return df
 
 
 def main():
 	st.title("Sentiment Analysis NLP App")
 	st.subheader("Streamlit Projects")
 
-	menu = ["Home","About"]
-	choice = st.sidebar.selectbox("Menu",menu)
+	menu = ["Home", "Extract from Twitter", "About"]
+	choice = st.sidebar.selectbox("Menu", menu)
 
 	if choice == "Home":
 		st.subheader("Home")
@@ -83,18 +81,37 @@ def main():
 					color='metric')
 				st.altair_chart(c,use_container_width=True)
 
-
-
 			with col2:
 				st.info("Token Sentiment")
-
 				token_sentiments = analyze_token_sentiment(raw_text)
 				st.write(token_sentiments)
 
+	elif choice == "Extract from Twitter":
+		st.subheader("Extract from Twitter")
+		with st.form(key='twitterForm'):
+			keyword = st.text_input("Enter keyword to search on Twitter")
+			num_tweets = st.number_input("Enter number of tweets to fetch", min_value=1, max_value=1000, step=1)
+			submit_button = st.form_submit_button(label='Extract')
 
-
-
-
+		if submit_button:
+			# Fetch tweets
+			tweets_df = fetch_tweets(keyword, num_tweets)
+			if not tweets_df.empty:
+				st.write(tweets_df)
+				# Analyze sentiment
+				sentiments = analyze_sentiment(tweets_df['clean_text'])
+				pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
+				st.write("Sentiment Analysis")
+				st.write("Positive: ", pos_count)
+				st.write("Negative: ", neg_count)
+				st.write("Neutral: ", neu_count)
+				# Pie chart
+				pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+				pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
+				fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
+				st.plotly_chart(fig)
+			else:
+				st.warning("No tweets found.")
 
 	else:
 		st.subheader("About")
@@ -102,4 +119,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
