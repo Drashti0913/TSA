@@ -1,5 +1,5 @@
 streamlit 
 Textblob 
-pandas as 
-altair as 
+pandas
+altair
 vaderSentiment
