@@ -112,7 +112,7 @@ def main():
             keyword = st.text_input("Enter keyword to search on Twitter")
             num_tweets = st.number_input("Enter number of tweets to fetch", min_value=1, max_value=1000, step=1)
             submit_button = st.form_submit_button(label='Extract')
-
+	
 	if submit_button:
 	    # Fetch tweets
 	    tweets_df = extract_tweets(keyword, num_tweets)
