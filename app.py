@@ -142,7 +142,7 @@ def main():
                 st.warning("No tweets found.")
 
         else:
-	    st.subheader("About")
+            st.subheader("About")
 
 
 if __name__ == '__main__':
