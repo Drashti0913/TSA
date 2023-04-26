@@ -59,8 +59,7 @@ def get_sentiment_counts(sentiments):
     neu_count = 0
 
     for sentiment in sentiments:
-       if isinstance(sentiment, tuple):
-           sentimentct = sentiment[0]
+      
        if sentiment > '0':
            pos_count += 1
        elif sentiment < '0':
@@ -131,7 +130,7 @@ def main():
 			tweets_df = extract_tweets(keyword, num_tweets)
 			if not tweets_df.empty:
 				sentiments = analyze_sentiment(tweets_df['clean_text'])
-				tweets_df['sentimentct'] = [s[0] for s in sentiments]
+				tweets_df['sentiment'] = [s[0] for s in sentiments]
 				st.write(tweets_df)
 				# Analyze sentiment
 				sentiments = analyze_sentiment(tweets_df['clean_text'])
