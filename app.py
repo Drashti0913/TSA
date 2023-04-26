@@ -124,21 +124,21 @@ def main():
 			# Fetch tweets
 			tweets_df = extract_tweets(keyword, num_tweets)
 			if not tweets_df.empty:
-			    sentiments = analyze_sentiment(tweets_df['clean_text'])
-			    tweets_df['sentiment'] = [s[0] for s in sentiments]
-			    st.write(tweets_df)
-			# Analyze sentiment
-			sentiments = analyze_sentiment(tweets_df['clean_text'])
-			pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-			st.write("Sentiment Analysis")
-			st.write("Positive: ", pos_count)
-			st.write("Negative: ", neg_count)
-			st.write("Neutral: ", neu_count)
-			# Pie chart
-			pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
-			pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
-			fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
-			st.plotly_chart(fig)
+				sentiments = analyze_sentiment(tweets_df['clean_text'])
+				tweets_df['sentiment'] = [s[0] for s in sentiments]
+				st.write(tweets_df)
+				# Analyze sentiment
+				sentiments = analyze_sentiment(tweets_df['clean_text'])
+				pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
+				st.write("Sentiment Analysis")
+				st.write("Positive: ", pos_count)
+				st.write("Negative: ", neg_count)
+				st.write("Neutral: ", neu_count)
+				# Pie chart
+				pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+				pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
+				fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
+				st.plotly_chart(fig)
 
 				
 			else:
