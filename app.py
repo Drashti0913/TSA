@@ -59,7 +59,7 @@ def get_sentiment_counts(sentiments):
     neu_count = 0
 
     for sentiment in sentiments:
-	if isinstance(sentiment, tuple):
+       if isinstance(sentiment, tuple):
            sentiment = sentiment[0]
        if int(sentiment) > 0:
            pos_count += 1
