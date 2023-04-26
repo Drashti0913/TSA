@@ -57,18 +57,13 @@ def get_sentiment_counts(sentiments):
     pos_count = 0
     neg_count = 0
     neu_count = 0
-
     for sentiment in sentiments:
-      
-       if sentiment > 0:
-           pos_count += 1
-       elif sentiment < 0:
-           neg_count += 1
-       else:
-           neu_count += 1
-
- 
-
+        if sentiment > 0:
+            pos_count += 1
+        elif sentiment < 0:
+            neg_count += 1
+        else:
+            neu_count += 1
     return pos_count, neg_count, neu_count
 
 
