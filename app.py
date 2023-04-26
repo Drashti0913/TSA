@@ -44,7 +44,12 @@ def analyze_sentiment(text):
     sentiments = []
     for tweet in text:
         sentiment = TextBlob(tweet).sentiment.polarity
-        sentiments.append(sentiment)
+        if sentiment > 0:
+            sentiments.append(('positive', sentiment))
+        elif sentiment < 0:
+            sentiments.append(('negative', sentiment))
+        else:
+            sentiments.append(('neutral', sentiment))
     return sentiments
 
 def get_sentiment_counts(sentiments):
@@ -119,7 +124,11 @@ def main():
 			# Fetch tweets
 			tweets_df = extract_tweets(keyword, num_tweets)
 			if not tweets_df.empty:
-				st.write(tweets_df)
+			    sentiments = analyze_sentiment(tweets_df['clean_text'])
+			    tweets_df['sentiment'] = [s[0] for s in sentiments]
+			    st.write(tweets_df)
+			    # ...rest of the code
+
 				# Analyze sentiment
 				sentiments = analyze_sentiment(tweets_df['clean_text'])
 				pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
