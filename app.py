@@ -95,7 +95,7 @@ def main():
 
 		if submit_button:
 			# Fetch tweets
-			tweets_df = fetch_tweets(keyword, num_tweets)
+			tweets_df = extract_tweets(keyword, num_tweets)
 			if not tweets_df.empty:
 				st.write(tweets_df)
 				# Analyze sentiment
