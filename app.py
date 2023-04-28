@@ -1,4 +1,3 @@
-
 import streamlit as st  
 from textblob import TextBlob
 import pandas as pd
@@ -9,29 +8,29 @@ import plotly.express as px
 
 # Fxn
 def convert_to_df(sentiment):
-	sentiment_dict = {'polarity':sentiment.polarity,'subjectivity':sentiment.subjectivity}
-	sentiment_df = pd.DataFrame(sentiment_dict.items(),columns=['metric','value'])
-	return sentiment_df
+    sentiment_dict = {'polarity':sentiment.polarity,'subjectivity':sentiment.subjectivity}
+    sentiment_df = pd.DataFrame(sentiment_dict.items(),columns=['metric','value'])
+    return sentiment_df
 
 def analyze_token_sentiment(docx):
-	analyzer = SentimentIntensityAnalyzer()
-	pos_list = []
-	neg_list = []
-	neu_list = []
-	for i in docx.split():
-		res = analyzer.polarity_scores(i)['compound']
-		if res > 0.1:
-			pos_list.append(i)
-			pos_list.append(res)
+    analyzer = SentimentIntensityAnalyzer()
+    pos_list = []
+    neg_list = []
+    neu_list = []
+    for i in docx.split():
+        res = analyzer.polarity_scores(i)['compound']
+        if res > 0.1:
+            pos_list.append(i)
+            pos_list.append(res)
 
-		elif res <= -0.1:
-			neg_list.append(i)
-			neg_list.append(res)
-		else:
-			neu_list.append(i)
+        elif res <= -0.1:
+            neg_list.append(i)
+            neg_list.append(res)
+        else:
+            neu_list.append(i)
 
-	result = {'positives':pos_list,'negatives':neg_list,'neutral':neu_list}
-	return result 
+    result = {'positives':pos_list,'negatives':neg_list,'neutral':neu_list}
+    return result 
 
 # Function to extract tweets from CSV
 def extract_tweets(keyword, num_tweets):
@@ -39,7 +38,6 @@ def extract_tweets(keyword, num_tweets):
     df = df[df["clean_text"].str.contains(keyword, case=False)]
     df = df[:num_tweets]
     return df
-
 
 def analyze_sentiment(text):
     sentiments = []
@@ -112,31 +110,30 @@ def main():
         with st.form(key='twitterForm'):
             keyword = st.text_input("Enter keyword to search on Twitter")
             num_tweets = st.number_input("Enter number of tweets to fetch", min_value=1, max_value=1000, step=1)
-            submit_button = st.form_submit_button(label='Extract')
-	
-	
-	if submit_button:
-		# Fetch tweets
-		tweets_df = extract_tweets(keyword, num_tweets)
-		if not tweets_df.empty:
-			st.write(tweets_df)
-			# Analyze sentiment
-			sentiments = analyze_sentiment(tweets_df['clean_text'])
-			pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-			st.write("Sentiment Analysis")
-			st.write("Positive: ", pos_count)
-			st.write("Negative: ", neg_count)
-			st.write("Neutral: ", neu_count)
-			# Pie chart
-			pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
-			pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
-			fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
-			st.plotly_chart(fig)
-		else:
-			st.warning("No tweets found.")
+            submit_button = st.form_submit_button(label='Extract') 
+            
+        if submit_button:
+            # Fetch tweets
+            tweets_df = extract_tweets(keyword, num_tweets)
+            if not tweets_df.empty:
+                st.write(tweets_df)
+                # Analyze sentiment
+                sentiments = analyze_sentiment(tweets_df['clean_text'])
+                pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
+                st.write("Sentiment Analysis")
+                st.write("Positive: ", pos_count)
+                st.write("Negative: ", neg_count)
+                st.write("Neutral: ", neu_count)
+                # Pie chart
+                pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+                pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
+                fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
+                st.plotly_chart(fig)
+            else:
+                st.warning("No tweets found.")
 
     else:
         st.subheader("About")
 
 if __name__ == '__main__':
-	main()
+    main()
