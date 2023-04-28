@@ -4,4 +4,4 @@ pandas
 altair
 vaderSentiment
 plotly
-html
+
