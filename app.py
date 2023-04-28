@@ -52,11 +52,20 @@ def analyze_sentiment(text):
     return sentiments
 
 def get_sentiment_counts(sentiments):
-    pos_count = sum(1 for sentiment in sentiments if sentiment[0] == 'positive')
-    neg_count = sum(1 for sentiment in sentiments if sentiment[0] == 'negative')
-    neu_count = sum(1 for sentiment in sentiments if sentiment[0] == 'neutral')
-    tweet_sentiments = [(tweet, sentiment) for tweet, sentiment in sentiments]
-    return pos_count, neg_count, neu_count, tweet_sentiments
+    pos_count = 0
+    neg_count = 0
+    neu_count = 0
+
+    for sentiment in sentiments:
+        if sentiment == "positive":
+            pos_count += 1
+        elif sentiment == "negative":
+            neg_count += 1
+        else:
+            neu_count += 1
+
+    return pos_count, neg_count, neu_count
+
 
 
 def main():
@@ -118,12 +127,15 @@ def main():
             if not tweets_df.empty:
                 st.write(tweets_df)
                 # Analyze sentiment
+                
                 sentiments = analyze_sentiment(tweets_df['clean_text'])
-                pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-                st.write("Sentiment Analysis")
-                st.write("Positive: ", pos_count)
-                st.write("Negative: ", neg_count)
-                st.write("Neutral: ", neu_count)
+                sentiments = ["positive", "negative", "neutral", "positive", "positive"]
+                counts = get_sentiment_counts(sentiments)
+                pos_count, neg_count, neu_count = counts
+
+                print(f"Positive count: {pos_count}")
+                print(f"Negative count: {neg_count}")
+                print(f"Neutral count: {neu_count}")
                 # Pie chart
                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
