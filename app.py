@@ -132,10 +132,6 @@ def main():
                 sentiments = ["positive", "negative", "neutral", "positive", "positive"]
                 counts = get_sentiment_counts(sentiments)
                 pos_count, neg_count, neu_count = counts
-
-                print(f"Positive count: {pos_count}")
-                print(f"Negative count: {neg_count}")
-                print(f"Neutral count: {neu_count}")
                 st.write("Sentiment Analysis")
                 st.write("Positive: ", pos_count)
                 st.write("Negative: ", neg_count)
