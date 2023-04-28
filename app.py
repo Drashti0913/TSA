@@ -129,12 +129,7 @@ def main():
                 # Get sentiment counts
                 pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
 
-                # Pie chart
-                pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
-                pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
-                fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
-                st.plotly_chart(fig)
-
+                
                 # Display sentiment labels and count
                 st.write("Sentiment count:")
                 st.write(f"Positive: {pos_count}")
@@ -148,6 +143,12 @@ def main():
                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Negative")
                     else:
                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Neutral")
+                        
+                # Pie chart
+                pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+                pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
+                fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
+                st.plotly_chart(fig)
             else:
                 st.warning("No tweets found.")
 
