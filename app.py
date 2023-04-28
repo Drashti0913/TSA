@@ -124,21 +124,10 @@ def main():
             if not tweets_df.empty:
                 # Analyze sentiment
                 sentiments = analyze_sentiment(tweets_df['clean_text'])
+                st.write("Tweets and their Sentiments:")
+
                 # Get sentiment counts
                 pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-                
-#                 data = []
-#                 for i in range(len(tweets_df)):
-#                     if sentiments[i][0] == 'positive':
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Positive'])
-#                     elif sentiments[i][0] == 'negative':
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Negative'])
-#                     else:
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Neutral'])
-#                 table_df = pd.DataFrame(data, columns=['Tweet', 'Sentiment'])
-#                 table_style = {'background-color': 'lightgrey', 'border': '1px solid black'}
-#                 st.markdown(f'<style>{table_style}</style>', unsafe_allow_html=True)
-#                 st.table(table_df.style.set_properties(**table_style))
                 
                 data = []
                 for i in range(len(tweets_df)):
