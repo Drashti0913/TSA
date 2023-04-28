@@ -1,4 +1,5 @@
-import streamlit as st  
+import streamlit as st
+from streamlit.elements import html
 from textblob import TextBlob
 import pandas as pd
 import altair as alt
@@ -122,35 +123,67 @@ def main():
             # Fetch tweets
             tweets_df = extract_tweets(keyword, num_tweets)
             if not tweets_df.empty:
-                st.write(tweets_df)
                 # Analyze sentiment
                 sentiments = analyze_sentiment(tweets_df['clean_text'])
+                sentiment_counts = get_sentiment_counts(sentiments)
 
-                # Get sentiment counts
-                pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-
-                
-                # Display sentiment labels and count
-                st.write("Sentiment count:")
-                st.write(f"Positive: {pos_count}")
-                st.write(f"Negative: {neg_count}")
-                st.write(f"Neutral: {neu_count}")
-                st.write("Sentiment labels:")
+                # Display results in a table
+                st.write("Sentiment Analysis Results:")
+                table_data = []
                 for i in range(len(tweets_df)):
-                    if sentiments[i][0] == 'positive':
-                        st.write(f"{tweets_df.iloc[i]['clean_text']} : Positive")
-                    elif sentiments[i][0] == 'negative':
-                        st.write(f"{tweets_df.iloc[i]['clean_text']} : Negative")
-                    else:
-                        st.write(f"{tweets_df.iloc[i]['clean_text']} : Neutral")
-                        
-                # Pie chart
-                pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+                    row = [tweets_df.iloc[i]['clean_text'], sentiments[i][0]]
+                    table_data.append(row)
+                table = pd.DataFrame(table_data, columns=['Tweet', 'Sentiment'])
+                st.table(table.style.set_properties(**{'background-color': 'lightgrey', 'border': '1px solid black'}))
+
+                # Display sentiment counts
+                st.write("Sentiment Counts:")
+                for k, v in sentiment_counts.items():
+                    st.write(f"{k.capitalize()}: {v}")
+
+                # Display pie chart
+                pie_data = {'Positive': sentiment_counts['positive'], 'Negative': sentiment_counts['negative'], 'Neutral': sentiment_counts['neutral']}
                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
                 fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
                 st.plotly_chart(fig)
             else:
                 st.warning("No tweets found.")
+
+
+
+
+
+
+#             if not tweets_df.empty:
+#                 st.write(tweets_df)
+#                 # Analyze sentiment
+#                 sentiments = analyze_sentiment(tweets_df['clean_text'])
+
+#                 # Get sentiment counts
+#                 pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
+
+                
+#                 # Display sentiment labels and count
+#                 st.write("Sentiment count:")
+#                 st.write(f"Positive: {pos_count}")
+#                 st.write(f"Negative: {neg_count}")
+#                 st.write(f"Neutral: {neu_count}")
+#                 st.write("Sentiment labels:")
+#                 for i in range(len(tweets_df)):
+#                     if sentiments[i][0] == 'positive':
+#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Positive")
+#                     elif sentiments[i][0] == 'negative':
+#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Negative")
+#                     else:
+#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Neutral")
+                        
+#                 # Pie chart
+#                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
+#                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
+#                 fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
+#                 st.plotly_chart(fig)
+#             else:
+#                 st.warning("No tweets found.")
 
 
     else:
