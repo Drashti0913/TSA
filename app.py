@@ -127,12 +127,6 @@ def main():
                 # Get sentiment counts
                 pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
 
-                # Display sentiment counts
-                st.write(f"Positive: {pos_count}")
-                st.write(f"Negative: {neg_count}")
-                st.write(f"Neutral: {neu_count}")
-                st.write('')
-
                 # Create table for displaying tweets and their corresponding sentiments
                 data = []
                 for i in range(len(tweets_df)):
@@ -143,7 +137,14 @@ def main():
                     else:
                         data.append([tweets_df.iloc[i]['clean_text'], 'Neutral'])
                 table_df = pd.DataFrame(data, columns=['Tweet', 'Sentiment'])
-                st.table(table_df.style.set_properties(**{'background-color': 'lightgrey', 'border': '1px solid black'}))
+                st.table(table_df.style.set_properties(**{'background-color': 'cian', 'border': '1px solid black'}))
+
+                # Display sentiment counts
+                st.write("Sentiment count:")
+                st.write(f"Positive: {pos_count}")
+                st.write(f"Negative: {neg_count}")
+                st.write(f"Neutral: {neu_count}")
+                st.write('')
 
                 # Display pie chart
                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
