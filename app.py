@@ -131,6 +131,8 @@ def main():
                 sentiments = analyze_sentiment(tweets_df['clean_text'])
                 sentiments = ["positive", "negative", "neutral", "positive", "positive"]
                 counts = get_sentiment_counts(sentiments)
+                pos_count, neg_count, neu_count = counts
+
                 st.write("Sentiment Analysis")
                 st.write("Positive: ", pos_count)
                 st.write("Negative: ", neg_count)
