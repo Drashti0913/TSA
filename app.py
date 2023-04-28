@@ -74,7 +74,6 @@ def main():
 
     if choice == "Home":
         st.subheader("Home")
-        st.sidebar("Some info")
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter Text Here")
             submit_button = st.form_submit_button(label='Analyze')
