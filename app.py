@@ -136,6 +136,10 @@ def main():
                 print(f"Positive count: {pos_count}")
                 print(f"Negative count: {neg_count}")
                 print(f"Neutral count: {neu_count}")
+                st.write("Sentiment Analysis")
+                st.write("Positive: ", pos_count)
+                st.write("Negative: ", neg_count)
+                st.write("Neutral: ", neu_count)
                 # Pie chart
                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
