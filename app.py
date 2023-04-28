@@ -52,21 +52,10 @@ def analyze_sentiment(text):
     return sentiments
 
 def get_sentiment_counts(sentiments):
-    pos_count = 0
-    neg_count = 0
-    neu_count = 0
-
-    for sentiment in sentiments:
-        if sentiment == "positive":
-            pos_count += 1
-        elif sentiment == "negative":
-            neg_count += 1
-        else:
-            neu_count += 1
-
+    pos_count = sum(1 for sentiment in sentiments if sentiment[0] == 'positive')
+    neg_count = sum(1 for sentiment in sentiments if sentiment[0] == 'negative')
+    neu_count = sum(1 for sentiment in sentiments if sentiment[0] == 'neutral')
     return pos_count, neg_count, neu_count
-
-
 
 def main():
     st.title("Sentiment Analysis NLP App")
