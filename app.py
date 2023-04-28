@@ -40,6 +40,7 @@ def extract_tweets(keyword, num_tweets):
     df = df[:num_tweets]
     return df
 
+
 def analyze_sentiment(text):
     sentiments = []
     for tweet in text:
