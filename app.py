@@ -196,12 +196,11 @@ def main():
         st.subheader("About")
 
         # Define the data for the table
-        table_data = [
-            ['Header 1', 'Header 2', 'Header 3'],
-            ['Row 1, Column 1', 'Row 1, Column 2', 'Row 1, Column 3'],
-            ['Row 2, Column 1', 'Row 2, Column 2', 'Row 2, Column 3'],
-            ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3']
-        ]
+        table_data = pd.DataFrame({
+            'Header 1': ['Row 1, Column 1', 'Row 2, Column 1', 'Row 3, Column 1'],
+            'Header 2': ['Row 1, Column 2', 'Row 2, Column 2', 'Row 3, Column 2'],
+            'Header 3': ['Row 1, Column 3', 'Row 2, Column 3', 'Row 3, Column 3']
+        })
 
         # Define the CSS for the table
         table_style = """
@@ -223,9 +222,9 @@ def main():
         </style>
         """
 
-        # Render the table
+        # Render the table without the index column
         st.markdown(table_style, unsafe_allow_html=True)
-        st.table(table_data)
+        st.table(table_data, index=False)
 
 
 if __name__ == '__main__':
