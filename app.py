@@ -66,8 +66,7 @@ def get_sentiment_counts(sentiments):
 
 
 def main():
-    st.title("Sentiment Analysis NLP App")
-    st.subheader("Streamlit Projects")
+    st.title("Twitter Sentiment Analyser and Visualizer")
 
     menu = ["Home", "Analyze from text", "Extract from Twitter", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
@@ -76,7 +75,34 @@ def main():
         st.subheader("Rules and parameters of Sentiment Analysis")
 
         st.write("Hello, this is a simple text.")
-    
+        data = pd.DataFrame({
+        'x': [1, 2, 3],
+        'y': [4, 5, 6]
+        })
+
+        chart = alt.Chart(data).mark_point().encode(
+            x='x',
+            y='y'
+        ).configure_view(
+            stroke='transparent',
+            width=400,
+            height=400
+        )
+
+        chart_html = chart.to_html()
+        css = """
+            <style>
+                .chart {
+                    border: 1px solid black;
+                    padding: 10px;
+                }
+            </style>
+        """
+
+        st.markdown(css + f"<div class='chart'>{chart_html}</div>", unsafe_allow_html=True)
+        st.write("This is a simple text.")
+
+
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
         with st.form(key='nlpForm'):
