@@ -153,20 +153,6 @@ def main():
 
                 st.table(styled_table)
 
-
-
-#                 # Create table for displaying tweets and their corresponding sentiments
-#                 data = []
-#                 for i in range(len(tweets_df)):
-#                     if sentiments[i][0] == 'positive':
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Positive'])
-#                     elif sentiments[i][0] == 'negative':
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Negative'])
-#                     else:
-#                         data.append([tweets_df.iloc[i]['clean_text'], 'Neutral'])
-#                 table_df = pd.DataFrame(data, columns=['Tweet', 'Sentiment'])
-#                 st.table(table_df.style.set_properties(**{'background-color': 'cian', 'border': '1px solid black'}))
-
                 # Display sentiment counts
                 st.write("Sentiment count:")
                 st.write(f"Positive: {pos_count}")
@@ -181,38 +167,6 @@ def main():
                 st.plotly_chart(fig)
             else:
                 st.warning("No tweets found.")
-
-#             if not tweets_df.empty:
-#                 st.write(tweets_df)
-#                 # Analyze sentiment
-#                 sentiments = analyze_sentiment(tweets_df['clean_text'])
-
-#                 # Get sentiment counts
-#                 pos_count, neg_count, neu_count = get_sentiment_counts(sentiments)
-
-                
-#                 # Display sentiment labels and count
-#                 st.write("Sentiment count:")
-#                 st.write(f"Positive: {pos_count}")
-#                 st.write(f"Negative: {neg_count}")
-#                 st.write(f"Neutral: {neu_count}")
-#                 st.write("Sentiment labels:")
-#                 for i in range(len(tweets_df)):
-#                     if sentiments[i][0] == 'positive':
-#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Positive")
-#                     elif sentiments[i][0] == 'negative':
-#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Negative")
-#                     else:
-#                         st.write(f"{tweets_df.iloc[i]['clean_text']} : Neutral")
-                        
-#                 # Pie chart
-#                 pie_data = {'Positive': pos_count, 'Negative': neg_count, 'Neutral': neu_count}
-#                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
-#                 fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
-#                 st.plotly_chart(fig)
-#             else:
-#                 st.warning("No tweets found.")
-
 
     else:
         st.subheader("About")
