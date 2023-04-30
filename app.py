@@ -67,6 +67,7 @@ def get_sentiment_counts(sentiments):
 
 def main():
     st.title("Twitter Sentiment Analyser and Visualizer")
+    st.subheader("Credits: Talati Jaival")
 
     menu = ["Home", "Analyze from text", "Extract from Twitter", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
