@@ -89,9 +89,9 @@ def main():
         </style>
         """
 
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'>Classifiers Used</div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'>Terminologies Used(Credits: Talati Jaival)</div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on ther following basis:<br>  +1: Positive sentiment<br>  0: Neutral sentiment<br>  -1: Negative sentiment</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used(Credits: Talati Jaival)</div></div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
 
         
     if choice == "Analyze from text":
