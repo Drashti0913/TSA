@@ -75,34 +75,20 @@ def main():
         st.subheader("Rules and parameters of Sentiment Analysis")
 
         st.write("Hello, this is a simple text.")
-        data = pd.DataFrame({
-        'x': [1, 2, 3],
-        'y': [4, 5, 6]
-        })
-
-        chart = alt.Chart(data).mark_point().encode(
-            x='x',
-            y='y'
-        ).configure_view(
-            stroke='transparent',
-            width=400,
-            height=400
-        )
-
-        chart_html = chart.to_html()
+        
         css = """
-            <style>
-                .chart {
-                    border: 1px solid black;
-                    padding: 10px;
-                }
-            </style>
+        <style>
+            .grey-bg {
+                background-color: #f2f2f2;
+                padding: 10px;
+                border-radius: 5px;
+            }
+        </style>
         """
 
-        st.markdown(css + f"{heyy}</div>", unsafe_allow_html=True)
-        st.write("This is a simple text.")
+        st.markdown(css + "<div class='grey-bg'>Hello, this is a simple text.</div>", unsafe_allow_html=True)
 
-
+        
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
         with st.form(key='nlpForm'):
