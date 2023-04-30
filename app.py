@@ -189,6 +189,19 @@ def main():
                 pie_df = pd.DataFrame.from_dict(pie_data, orient='index', columns=['count'])
                 fig = px.pie(pie_df, values='count', names=pie_df.index, title='Sentiment Distribution')
                 st.plotly_chart(fig)
+                
+                # Concatenate all cleaned tweets
+                text = ' '.join(tweets_df['clean_text'])
+
+                # Generate the wordcloud
+                wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+
+                # Display the wordcloud
+                fig, ax = plt.subplots()
+                ax.imshow(wordcloud, interpolation='bilinear')
+                ax.axis('off')
+                st.pyplot(fig)
+
             else:
                 st.warning("No tweets found.")
 
