@@ -69,11 +69,11 @@ def main():
     st.title("Sentiment Analysis NLP App")
     st.subheader("Streamlit Projects")
 
-    menu = ["Home", "Extract from Twitter", "About"]
+    menu = ["Home", "Analyze from text", "Extract from Twitter", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
-    if choice == "Home":
-        st.subheader("Home")
+    if choice == "Analyze from text":
+        st.subheader("Analyze from text")
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter Text Here")
             submit_button = st.form_submit_button(label='Analyze')
