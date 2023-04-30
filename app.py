@@ -193,13 +193,13 @@ def main():
                 st.warning("No tweets found.")
 
     if choice == "About":
-        st.subheader("About")
+        st.subheader("Meet our Developers:")
 
         # Define the data for the table
         table_data = pd.DataFrame({
-            'Header 1': ['Row 1, Column 1', 'Row 2, Column 1', 'Row 3, Column 1'],
-            'Header 2': ['Row 1, Column 2', 'Row 2, Column 2', 'Row 3, Column 2'],
-            'Header 3': ['Row 1, Column 3', 'Row 2, Column 3', 'Row 3, Column 3']
+            'Veerangi Mehta': ['20BCP003', 'Div 1, G1', 'veerangi.mce20@sot.pdpu.ac.in'],
+            'Dhvanil Bhagat': ['20BCP027', 'Div 1, G1', 'dhvanil.bce20@sot.pdpu.ac.in'],
+            'Drashti Bhavsar': ['20BCP040', 'Div 1, G1', 'drashti.bce20@sot.pdpu.ac.in']
         })
 
         # Define the CSS for the table
@@ -210,15 +210,13 @@ def main():
           width: 100%;
         }
         th, td {
-          text-align: left;
+          text-align: center;
           padding: 8px;
         }
         th {
           background-color: #f2f2f2;
         }
-        tr:nth-child(even) {
-          background-color: #f2f2f2;
-        }
+        
         </style>
         """
 
