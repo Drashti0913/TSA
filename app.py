@@ -99,7 +99,7 @@ def main():
             </style>
         """
 
-        st.markdown(css + f"<div class='chart'>{chart_html}</div>", unsafe_allow_html=True)
+        st.markdown(css + f"<div>{chart_html}</div>", unsafe_allow_html=True)
         st.write("This is a simple text.")
 
 
