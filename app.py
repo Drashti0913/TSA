@@ -75,8 +75,7 @@ def main():
     if choice == "Home":
         st.subheader("Rules and parameters of Sentiment Analysis")
 
-        st.write("Hello, this is a simple text.")
-        
+    
         css = """
         <style>
             .grey-bg {
@@ -96,8 +95,6 @@ def main():
         st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on the following basis<br>●  +1: Positive sentiment<br>●  0: Neutral sentiment<br>●  -1: Negative sentiment</div>", unsafe_allow_html=True)
         st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>The definition goes here<br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
         st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used(Credits: Talati Jaival)</div></div><div class='grey-bg'>Polarity<br>The definition goes here<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used(Credits: Talati Jaival)</div></div><div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
-
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
@@ -195,8 +192,41 @@ def main():
             else:
                 st.warning("No tweets found.")
 
-    else:
+    if choice == "About":
         st.subheader("About")
+
+        # Define the data for the table
+        table_data = [
+            ['Header 1', 'Header 2', 'Header 3'],
+            ['Row 1, Column 1', 'Row 1, Column 2', 'Row 1, Column 3'],
+            ['Row 2, Column 1', 'Row 2, Column 2', 'Row 2, Column 3'],
+            ['Row 3, Column 1', 'Row 3, Column 2', 'Row 3, Column 3']
+        ]
+
+        # Define the CSS for the table
+        table_style = """
+        <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        </style>
+        """
+
+        # Render the table
+        st.markdown(table_style, unsafe_allow_html=True)
+        st.table(table_data)
+
 
 if __name__ == '__main__':
     main()
