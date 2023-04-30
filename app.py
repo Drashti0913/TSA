@@ -224,7 +224,7 @@ def main():
 
         # Render the table without the index column
         st.markdown(table_style, unsafe_allow_html=True)
-        st.table(table_data, index=False)
+        st.table(table_data)
 
 
 if __name__ == '__main__':
