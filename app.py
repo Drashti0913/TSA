@@ -4,6 +4,8 @@ import pandas as pd
 import altair as alt
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import plotly.express as px
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
 
 # Fxn
