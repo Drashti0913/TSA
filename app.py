@@ -210,10 +210,12 @@ def main():
           width: 100%;
         }
         th, td {
-          text-align: centre;
+          text-align: center;
           padding: 8px;
         }
+
         th {
+          font-weight: bold;      
           background-color: #f2f2f2;
         }
         
