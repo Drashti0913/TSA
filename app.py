@@ -69,7 +69,6 @@ def get_sentiment_counts(sentiments):
 
 def main():
     st.title("Twitter Sentiment Analyser and Visualizer")
-    st.subheader("Credits: Talati Jaival")
 
     menu = ["Home", "Analyze from text", "Extract from Twitter", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
@@ -96,7 +95,7 @@ def main():
 
         st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on the following basis<br>●  +1: Positive sentiment<br>●  0: Neutral sentiment<br>●  -1: Negative sentiment</div>", unsafe_allow_html=True)
         st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>The definition goes here<br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used(Credits: Talati Jaival)</div></div><div class='grey-bg'>Polarity<br>The definition goes here<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>The definition goes here<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
