@@ -71,7 +71,12 @@ def main():
 
     menu = ["Home", "Analyze from text", "Extract from Twitter", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
+    
+    if choice == "Home":
+        st.subheader("Rules and parameters of Sentiment Analysis")
 
+        st.write("Hello, this is a simple text.")
+    
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
         with st.form(key='nlpForm'):
