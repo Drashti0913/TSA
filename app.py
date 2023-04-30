@@ -86,7 +86,7 @@ def main():
         </style>
         """
 
-        st.markdown(css + "<div class='grey-bg'>Hello, this is a simple text.</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'>Hello, this is a simple text.<br> Is it though?</div>", unsafe_allow_html=True)
 
         
     if choice == "Analyze from text":
