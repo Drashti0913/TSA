@@ -196,6 +196,7 @@ def main():
                 text = ' '.join(tweets_df['clean_text'])
 
                 # Generate the wordcloud
+                st.write("Word Cloud:")
                 wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
 
                 # Display the wordcloud
