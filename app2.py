@@ -118,7 +118,7 @@ def main():
         </style>
         """
 
-        st.sidebar.markdown(css + "<div class='size'>Terminologies Used</div><div class='grey-bg'>Polarity<br>Polarity is a measure of the sentiment expressed in a piece of text data or a tweet. It is calculated using the TextBlob and vaderSentiment libraries. Range: -1 to 1.<br><br>Subjectivity<br> Subjectivity is a measure of the degree to which a piece of text data or a tweet expresses a personal opinion or feeling. It is calculated using the TextBlob library. Range: 0 - 1<br><br>Token sentiment<br>Token sentiment is a measure of the sentiment expressed by individual words or tokens in a piece of text data or a tweet. It is calculated using the TextBlob library. The sentiment of each token is classified as positive, negative, or neutral, and the overall sentiment of the text is calculated based on the sentiment of the individual tokens.</div>", unsafe_allow_html=True)
+        st.sidebar.markdown(css + "<div class='size'>Terminologies Used</div><div class='grey-bg'>Polarity<br>Polarity is a measure of the sentiment expressed in a piece of text data or a tweet using the TextBlob and vaderSentiment libraries. Range: -1 to 1.<br><br>Subjectivity<br> Subjectivity is the degree to which a data or a tweet expresses a personal opinion or feeling. Range: 0 - 1<br><br>Token sentiment<br>Token sentiment is a measure of the sentiment expressed by individual words or tokens in a data or a tweet.</div>", unsafe_allow_html=True)
 
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter Text Here")
