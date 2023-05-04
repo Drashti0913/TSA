@@ -85,8 +85,12 @@ def main():
                 border-radius: 5px;
             }
             .size {
+                font-size: 20px;
+            }
+            .size1 {
                 font-size: 18px;
             }
+
             .my-text {
                 text-indent: 20px;
             }
@@ -94,8 +98,8 @@ def main():
         """
 
         st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on the following basis<br>●  +1: Positive sentiment<br>●  0: Neutral sentiment<br>●  -1: Negative sentiment</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>VaderSentiment is a lexicon-based sentiment analysis tool specifically designed to analyze social media text. It uses a rule-based approach and a lexicon of positive and negative words and phrases to calculate a sentiment score for a given text. The sentiment score ranges from -1 to 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. <br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>TextBlob is another popular Python library for NLP, which provides an easy-to-use interface for performing common NLP tasks like part-of-speech tagging, noun phrase extraction, sentiment analysis, etc. TextBlob's sentiment analysis is based on the Naive Bayes algorithm, which uses a training set of labeled data to learn how to classify text as positive, negative, or neutral. TextBlob's sentiment analysis also returns two values - polarity and subjectivity. Polarity is a float value between -1 and 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. Subjectivity is a float value between 0 and 1, where 0 indicates very objective text and 1 indicates very subjective text<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'><div class='size'>Vader Sentiment Analyzer</div><br>VaderSentiment is a lexicon-based sentiment analysis tool specifically designed to analyze social media text. It uses a rule-based approach and a lexicon of positive and negative words and phrases to calculate a sentiment score for a given text. The sentiment score ranges from -1 to 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. <br><br><div class='size'>TextBlob</div><br>TextBlob is another popular Python library for NLP, which provides an easy-to-use interface for performing common NLP tasks like part-of-speech tagging, noun phrase extraction, sentiment analysis, etc. TextBlob's sentiment analysis is based on the Naive Bayes algorithm, which uses a training set of labeled data to learn how to classify text as positive, negative, or neutral. TextBlob's sentiment analysis also returns two values - polarity and subjectivity. Polarity is a float value between -1 and 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. Subjectivity is a float value between 0 and 1, where 0 indicates very objective text and 1 indicates very subjective text</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>the<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
