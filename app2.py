@@ -94,7 +94,7 @@ def main():
         """
 
         st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on the following basis<br>●  +1: Positive sentiment<br>●  0: Neutral sentiment<br>●  -1: Negative sentiment</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>The definition goes here<br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>VaderSentiment is a lexicon-based sentiment analysis tool specifically designed to analyze social media text. It uses a rule-based approach and a lexicon of positive and negative words and phrases to calculate a sentiment score for a given text. The sentiment score ranges from -1 to 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. <br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
         st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>The definition goes here<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
         
     if choice == "Analyze from text":
