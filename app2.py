@@ -103,7 +103,7 @@ def main():
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
-         css = """
+        css = """
         <style>
             .size {
                 font-size: 20px;
