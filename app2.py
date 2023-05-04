@@ -103,6 +103,23 @@ def main():
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
+         css = """
+        <style>
+            .size {
+                font-size: 20px;
+            }
+            .size1 {
+                font-size: 18px;
+            }
+
+            .my-text {
+                text-indent: 20px;
+            }
+        </style>
+        """
+
+        st.markdown(css + "<div class='size'>Enter the text you want to classify in the text box</div><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>Polarity is a measure of the sentiment expressed in a piece of text data or a tweet. In your project, polarity is calculated using the TextBlob and vaderSentiment libraries. The polarity score ranges from -1 to 1, with -1 being the most negative, 0 being neutral, and 1 being the most positive.<br><br>Subjectivity<br> Subjectivity is a measure of the degree to which a piece of text data or a tweet expresses a personal opinion or feeling. In your project, subjectivity is calculated using the TextBlob library. The subjectivity score ranges from 0 to 1, with 0 being the most objective and 1 being the most subjective.<br><br>Token sentiment<br>Token sentiment is a measure of the sentiment expressed by individual words or tokens in a piece of text data or a tweet. In your project, token sentiment is calculated using the TextBlob library. The sentiment of each token is classified as positive, negative, or neutral, and the overall sentiment of the text is calculated based on the sentiment of the individual tokens.</div>", unsafe_allow_html=True)
+
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter Text Here")
             submit_button = st.form_submit_button(label='Analyze')
