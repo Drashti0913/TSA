@@ -85,8 +85,12 @@ def main():
                 border-radius: 5px;
             }
             .size {
+                font-size: 20px;
+            }
+            .size1 {
                 font-size: 18px;
             }
+
             .my-text {
                 text-indent: 20px;
             }
@@ -94,11 +98,27 @@ def main():
         """
 
         st.markdown(css + "<div class='grey-bg'><div class='size'>Rules for sentiment classification</div></div><div class='grey-bg'>Classification of the sentiment will be done on the following basis<br>●  +1: Positive sentiment<br>●  0: Neutral sentiment<br>●  -1: Negative sentiment</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'>Vader Sentiment Analyzer<br>The definition goes here<br><br>TextBlob<br>The definition goes here</div>", unsafe_allow_html=True)
-        st.markdown(css + "<div class='grey-bg'><div class='size'>Terminologies Used</div></div><div class='grey-bg'>Polarity<br>The definition goes here<br><br>Subjectivity<br>The definition goes here<br><br>Token sentiment<br>The definition goes here</div>", unsafe_allow_html=True)
+        st.markdown(css + "<div class='grey-bg'><div class='size'>Classifiers Used</div></div><div class='grey-bg'><div class='size1'>Vader Sentiment Analyzer</div><br>VaderSentiment is a lexicon-based sentiment analysis tool specifically designed to analyze social media text. It uses a rule-based approach and a lexicon of positive and negative words and phrases to calculate a sentiment score for a given text. The sentiment score ranges from -1 to 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. <br><br><div class='size1'>TextBlob</div><br>TextBlob is another popular Python library for NLP, which provides an easy-to-use interface for performing common NLP tasks like part-of-speech tagging, noun phrase extraction, sentiment analysis, etc. TextBlob's sentiment analysis is based on the Naive Bayes algorithm, which uses a training set of labeled data to learn how to classify text as positive, negative, or neutral. TextBlob's sentiment analysis also returns two values - polarity and subjectivity. Polarity is a float value between -1 and 1, where -1 indicates very negative sentiment, 0 indicates neutral sentiment, and 1 indicates very positive sentiment. Subjectivity is a float value between 0 and 1, where 0 indicates very objective text and 1 indicates very subjective text</div>", unsafe_allow_html=True)
         
     if choice == "Analyze from text":
         st.subheader("Analyze from text")
+        css = """
+        <style>
+            .size {
+                font-size: 20px;
+            }
+            .size1 {
+                font-size: 18px;
+            }
+
+            .my-text {
+                text-indent: 20px;
+            }
+        </style>
+        """
+
+        st.sidebar.markdown(css + "<div class='size'>Terminologies Used</div><div class='grey-bg'>Polarity<br>Polarity is a measure of the sentiment expressed in a piece of text data or a tweet using the TextBlob and vaderSentiment libraries. Range: -1 to 1.<br><br>Subjectivity<br> Subjectivity is the degree to which a data or a tweet expresses a personal opinion or feeling. Range: 0 - 1<br><br>Token sentiment<br>Token sentiment is a measure of the sentiment expressed by individual words or tokens in a data or a tweet.</div>", unsafe_allow_html=True)
+
         with st.form(key='nlpForm'):
             raw_text = st.text_area("Enter Text Here")
             submit_button = st.form_submit_button(label='Analyze')
@@ -138,6 +158,25 @@ def main():
 
     elif choice == "Extract from Twitter":
         st.subheader("Extract from Twitter")
+        
+        css = """
+        <style>
+            .size {
+                font-size: 20px;
+            }
+            .size1 {
+                font-size: 18px;
+            }
+
+            .my-text {
+                text-indent: 20px;
+            }
+        </style>
+        """
+
+        st.sidebar.markdown(css + "<div class='size'>Terminologies Used</div><div class='grey-bg'>WordCloud<br>Word clouds or tag clouds are graphical representations of word frequency that give greater prominence to words that appear more frequently in a source text.<br></div>", unsafe_allow_html=True)
+
+    
         with st.form(key='twitterForm'):
             keyword = st.text_input("Enter keyword to search on Twitter")
             num_tweets = st.number_input("Enter number of tweets to fetch", min_value=1, max_value=1000, step=1)
