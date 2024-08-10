@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ```
 Run the Project:
 ```
-python main.py
+python app.py
 ```
 ## Usage
 
